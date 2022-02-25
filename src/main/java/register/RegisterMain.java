@@ -1,5 +1,7 @@
 package register;
 
+import java.util.Scanner;
+
 public class RegisterMain {
     /**
      * Task 0: Update the project:
@@ -10,6 +12,32 @@ public class RegisterMain {
      */
 
     // Operator Precedence: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html
+    public static void main(String[] args) {
+        int i = 5;
+        System.out.println(i);
+        System.out.println(i++);
+        System.out.println(++i);
+
+        User user = new User();
+        User anotherUser = new User("Joe Doe", 2010, "Második utca 1");
+        user.setName("John Doe");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter your name: ");
+        user.setName(scanner.nextLine());
+        System.out.print("Please enter your year of birth: ");
+        user.setBirthYear(scanner.nextInt());
+        scanner.nextLine();
+        System.out.print("Please enter your address: ");
+        user.setAddress(scanner.nextLine());
+
+        System.out.println(user.getName());
+        System.out.println(user.getBirthYear());
+        System.out.println(user.getAddress());
+        System.out.println(anotherUser.getName());
+        System.out.println(anotherUser.getBirthYear());
+        System.out.println(anotherUser.getAddress());
+    }
 
     /**
      * Task 1: Create main method.

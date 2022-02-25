@@ -29,6 +29,42 @@ public class NumbersMain {
      *   - int (5 and 32768) to long
      *   - long (22_000_000L) to int
      */
+    public static void main(String[] args) {
+        int a = 5;
+        Integer b = 5;
+        Integer c = a;
+        Integer d = b;
+        Integer e = Integer.valueOf(5);
+        int f = Integer.valueOf(5);
+        int g = Integer.valueOf(a);
+        int h = c.intValue();
+        int i = Integer.parseInt("5");
+        Integer j = Integer.parseInt("5");
+
+        System.out.println(a);
+
+        System.out.println(Byte.MAX_VALUE);
+        System.out.println(Short.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Long.MAX_VALUE);
+
+        int num1 = 5;
+        int num2 = 32768;
+        byte byteNum = 5;
+        byte byteNum1 = (byte) num1;
+        byte byteNum2 = (byte) num2;
+        System.out.println(byteNum1);
+        System.out.println(byteNum2);
+        short shortNum = 32767;
+        short shortNum1 = (short) num1;
+        short shortNum2 = (short) num2;
+        System.out.println(shortNum1);
+        System.out.println(shortNum2);
+        long longNum1 = num1;
+        long longNum2 = (long) num2;
+        long longNum = 22_000_000_000L;
+        int intLongNum = (int) longNum;
+    }
 
     /**
      * Task 2: Create Circle class in numbers package.
