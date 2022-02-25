@@ -11,7 +11,7 @@ public class Circle {
      * Hint: Create a quasi-constant PI value in Circle class. (Or you can import Math.PI.)
      */
     private final double radius;
-    private static final double PI = 3.14;
+    public static final double PI = 3.14;
 
     public Circle(double radius) {
         this.radius = radius;
@@ -22,6 +22,10 @@ public class Circle {
     }
 
     public double getArea() {
-        return radius * radius;
+        return radius * radius * PI;
+    }
+
+    public double getPerimeter() {
+        return 2 * radius * Math.PI;
     }
 }

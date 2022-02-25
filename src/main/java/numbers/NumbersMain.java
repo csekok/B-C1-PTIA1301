@@ -64,6 +64,9 @@ public class NumbersMain {
         long longNum2 = (long) num2;
         long longNum = 22_000_000_000L;
         int intLongNum = (int) longNum;
+
+        double pi = Circle.PI;
+        Circle circle = new Circle(5);
     }
 
     /**
@@ -82,6 +85,13 @@ public class NumbersMain {
      *   - value of number minus 5 if it is greater than 5,
      *   - value of number in all other cases.
      */
+    public static int subtractFiveIfGreaterThanFive(int number) {
+        if (number > 5) {
+            return number - 5;
+        } else {
+            return number;
+        }
+    }
 
     /**
      * Task 4: Create a static convertDoubleToDouble method, which does:
@@ -89,11 +99,23 @@ public class NumbersMain {
      *   2. Convert the the int value to double. (Cut the real part.)
      *   3. Return the double value.
      */
+    public static double convertDoubleToDouble(double number) {
+        int intNumber = (int) number;
+        double result = intNumber;
+        return result;
+    }
 
     /**
      * Task 5: Create a convertIntToByte method to convert int values to bytes.
      * If the value is greater than 127 or less than 0, then return with -1.
      */
+    public static byte convertIntToByte(int number) {
+        if (number < 0 || number > 127) {
+            return -1;
+        } else {
+            return (byte) number;
+        }
+    }
 
     /**
      * Task 6: Create a getFirstDecimal method to get the first decimal of a real number.
