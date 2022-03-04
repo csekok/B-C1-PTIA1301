@@ -1,5 +1,8 @@
 package register;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class RegisterMain {
@@ -21,6 +24,13 @@ public class RegisterMain {
         User user = new User();
         User anotherUser = new User("Joe Doe", 2010, "Második utca 1");
         user.setName("John Doe");
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            String row = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter your name: ");

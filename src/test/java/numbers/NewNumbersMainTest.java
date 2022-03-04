@@ -11,7 +11,6 @@ public class NewNumbersMainTest {
     private static final Random RANDOM_GENERATOR = new Random(50);
     //TODO Before doing a task remove "/*" and "*/" in its test class (Shortcut: Crtl + Shift + /).
 
-    /**
     @Test
     public void testGenerateArrayWithoutParameter() {
         int[] expected = new int[]{1, 2, 3, 4, 5};
@@ -198,7 +197,7 @@ public class NewNumbersMainTest {
 
         assertEquals(50, NewNumbersMain.intersection(list1, list1).size());
     }
-
+/*
     @Test
     public void testNumberOfOddsEmptyList() {
         assertEquals(0, NewNumbersMain.numberOfOdds(new ArrayList<>()));
