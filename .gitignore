@@ -1,1 +1,3 @@
 /target/
+/src/main/resources/users.csv
+/src/test/resources/write_users.csv
