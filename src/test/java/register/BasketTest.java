@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class BasketTest {
     //TODO Before doing a task remove "/*" and "*/" in its test class (Shortcut: Ctrl + Shift + /).
 
-    /*
+
     @Test
     public void createReceipt() {
         Basket basket = new Basket();
@@ -18,13 +18,13 @@ public class BasketTest {
         int price1 = 300;
         basket.goodsList.add(new Goods(goods1, price1));
 
-        assertEquals(goods1 + " " + price1 + "\r\n", basket.createReceipt());
+        assertEquals(goods1 + " " + price1, basket.createReceipt());
 
         String goods2 = "milk";
         int price2 = 300;
         basket.goodsList.add(new Goods(goods2, price2));
 
-        assertEquals(goods1 + " " + price1 + "\r\n" + goods2 + " " + price2 + "\r\n", basket.createReceipt());
+        assertEquals(goods1 + " " + price1 + "\r\n" + goods2 + " " + price2, basket.createReceipt());
     }
 
     @Test
@@ -45,5 +45,4 @@ public class BasketTest {
 
         assertEquals(price1 + price2, basket.getTotalPrice());
     }
-    */
 }
