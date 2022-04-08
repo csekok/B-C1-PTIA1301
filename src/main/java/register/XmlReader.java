@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.print.Doc;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileInputStream;
@@ -31,12 +32,74 @@ public class XmlReader {
      *       - return with the list of created Users
      * Create a main method.
      * In main method:
-     *       - call readUsersFromXml method with "src/main/resources/users.xml" parameter
+     *       - call readUsersFromXml method with "src/main/resources/users.xml"
+     *         parameter
      *       - print all data of users in structured way
      * Hint: Use DocumentBuilderFactory.newInstance().newDocumentBuilder().parse()
      *       method to read the XML in structured way.
      * Hint: To print you can override the toString method of User class.
      */
+
+    public static void main(String[] args) {
+        ArrayList<User> users = readUsersFromXml("src/main/resources/users.xml");
+        System.out.println(users.size());
+        System.out.println(users);
+        int numberOfOccurrence = numberOfOccurrence("src/main/resources/users.xml", "name");
+        System.out.println(numberOfOccurrence);
+        numberOfOccurrence = numberOfOccurrence("src/main/resources/users.xml", "nme");
+        System.out.println(numberOfOccurrence);
+    }
+
+    public static ArrayList<User> readUsersFromXml(String filepath) {
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            DocumentBuilderFactory documentBuilderFactory =
+                    DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder =
+                    documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(filepath);
+
+            Element rootElement = document.getDocumentElement();
+            System.out.println(rootElement.getNodeName());
+            System.out.println(rootElement.getNodeType());
+            System.out.println("Element node short value: " + Node.ELEMENT_NODE);
+            System.out.println("Text node short value: " + Node.TEXT_NODE);
+            //System.out.println(rootElement.getTextContent());
+            NodeList childNodesList = rootElement.getChildNodes();
+            System.out.println(childNodesList.getLength());
+            System.out.println("---------------");
+            int numberOfElementNodes = 0;
+            Node node;
+            for (int i = 0; i < childNodesList.getLength(); i++) {
+                node = childNodesList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    System.out.println(node.getNodeName());
+                    //System.out.println(node.getTextContent());
+                    numberOfElementNodes++;
+                    NodeList childNodesOfUserTag = node.getChildNodes();
+                    String name = "", birthYear = "", address = "", eyeColor = "";
+                    for (int j = 0; j < childNodesOfUserTag.getLength(); j++) {
+                        System.out.println(childNodesOfUserTag.item(j).getNodeType()
+                                  + " " + childNodesOfUserTag.item(j).getNodeName());
+                        if (childNodesOfUserTag.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                            switch (childNodesOfUserTag.item(j).getNodeName()) {
+                                case "name" -> name = childNodesOfUserTag.item(j).getTextContent();
+                                case "birthYear" -> birthYear = childNodesOfUserTag.item(j).getTextContent();
+                                case "address" -> address = childNodesOfUserTag.item(j).getTextContent();
+                                case "eyeColor" -> eyeColor = childNodesOfUserTag.item(j).getTextContent();
+                            }
+                        }
+                    }
+                    users.add(new User(name, Integer.parseInt(birthYear), address,
+                              EyeColor.valueOf(eyeColor)));
+                }
+            }
+            System.out.println("Number of element nodes: " + numberOfElementNodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
 
     /**
      * Task 2:
@@ -46,6 +109,23 @@ public class XmlReader {
      * Call numberOfOccurrence method with
      *       "src/main/resources/users.xml" and "name" parameters in main method.
      */
+
+    public static int numberOfOccurrence(String filepath, String tagName) {
+        int numberOfOccurrence = 0;
+        try {
+            DocumentBuilderFactory documentBuilderFactory =
+                    DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder =
+                    documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(filepath);
+            Element rootElement = document.getDocumentElement();
+            NodeList tagNameNodeList = rootElement.getElementsByTagName(tagName);
+            numberOfOccurrence = tagNameNodeList.getLength();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return numberOfOccurrence;
+    }
 
     /**
      * Task 3:
