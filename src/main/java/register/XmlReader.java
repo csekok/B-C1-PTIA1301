@@ -60,27 +60,27 @@ public class XmlReader {
             Document document = documentBuilder.parse(filepath);
 
             Element rootElement = document.getDocumentElement();
-            System.out.println(rootElement.getNodeName());
+            /*System.out.println(rootElement.getNodeName());
             System.out.println(rootElement.getNodeType());
             System.out.println("Element node short value: " + Node.ELEMENT_NODE);
-            System.out.println("Text node short value: " + Node.TEXT_NODE);
+            System.out.println("Text node short value: " + Node.TEXT_NODE);*/
             //System.out.println(rootElement.getTextContent());
             NodeList childNodesList = rootElement.getChildNodes();
-            System.out.println(childNodesList.getLength());
-            System.out.println("---------------");
+            /*System.out.println(childNodesList.getLength());
+            System.out.println("---------------");*/
             int numberOfElementNodes = 0;
             Node node;
             for (int i = 0; i < childNodesList.getLength(); i++) {
                 node = childNodesList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    System.out.println(node.getNodeName());
+                    //System.out.println(node.getNodeName());
                     //System.out.println(node.getTextContent());
                     numberOfElementNodes++;
                     NodeList childNodesOfUserTag = node.getChildNodes();
                     String name = "", birthYear = "", address = "", eyeColor = "";
                     for (int j = 0; j < childNodesOfUserTag.getLength(); j++) {
-                        System.out.println(childNodesOfUserTag.item(j).getNodeType()
-                                  + " " + childNodesOfUserTag.item(j).getNodeName());
+                        /*System.out.println(childNodesOfUserTag.item(j).getNodeType()
+                                  + " " + childNodesOfUserTag.item(j).getNodeName());*/
                         if (childNodesOfUserTag.item(j).getNodeType() == Node.ELEMENT_NODE) {
                             switch (childNodesOfUserTag.item(j).getNodeName()) {
                                 case "name" -> name = childNodesOfUserTag.item(j).getTextContent();
@@ -94,7 +94,7 @@ public class XmlReader {
                               EyeColor.valueOf(eyeColor)));
                 }
             }
-            System.out.println("Number of element nodes: " + numberOfElementNodes);
+            //System.out.println("Number of element nodes: " + numberOfElementNodes);
         } catch (Exception e) {
             e.printStackTrace();
         }
