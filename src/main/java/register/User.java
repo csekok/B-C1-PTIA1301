@@ -1,5 +1,6 @@
 package register;
 
+@ClassHistory(createdOn = "2022-02-18", lastModifiedOn = "2022-05-06")
 public class User {
     private String name;
     private int birthYear;
@@ -64,11 +65,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", birthYear=" + birthYear +
-                ", address='" + address + '\'' +
-                ", eyeColor=" + eyeColor +
-                '}';
+        return name + '(' + birthYear + ')';
     }
 }

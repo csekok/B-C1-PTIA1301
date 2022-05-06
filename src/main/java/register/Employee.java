@@ -1,5 +1,6 @@
 package register;
 
+@ClassHistory(author = "Kinga", createdOn = "2022-03-04", lastModifiedOn = "2022-05-06")
 public class Employee extends User {
     /**
      * Task 3: Create an Employee class. Employees are users, who has a position and get salary.
